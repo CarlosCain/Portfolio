@@ -244,25 +244,67 @@
 
     </section>
 
-    <!-- ARCHITECTURE -->
-    <section id="architecture" class="mb-5">
-        <h2 class="section-title">Architecture & Design</h2>
-        <p>
-            The PAWS Storefront follows a <strong>three‑layer architecture</strong> designed for maintainability, scalability, and security.
-        </p>
+    <!-- Architecture & ERD Section -->
+<section id="architecture" class="py-5 bg-light">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold">Architecture & Data Design</h2>
+      <p class="text-muted">
+        High-level system architecture, deployment view, and relational data model for the PAWS Storefront.
+      </p>
+    </div>
 
-        <ul>
-            <li><strong>Presentation Layer:</strong> Thymeleaf templates, Bootstrap UI, responsive layout</li>
-            <li><strong>Business Layer:</strong> Controllers, Services, Validation, Logging</li>
-            <li><strong>Data Layer:</strong> MySQL database, JPA/Hibernate, DAO layer</li>
-        </ul>
+    <div class="row g-4">
+      <!-- System Architecture Card -->
+      <div class="col-md-6">
+        <div class="card h-100 shadow-sm">
+          <img src="img/architecture.png" class="card-img-top" alt="PAWS Logical Architecture">
+          <div class="card-body">
+            <h5 class="card-title">System Architecture</h5>
+            <p class="card-text">
+              The PAWS Storefront uses a layered architecture with a Presentation layer (Thymeleaf),
+              Business Logic layer (Spring services), and Data layer (JPA repositories and MySQL).
+              This structure supports scalability, maintainability, and secure request handling.
+            </p>
+            <ul class="small">
+              <li><strong>Presentation:</strong> HTML, CSS, Bootstrap, Thymeleaf</li>
+              <li><strong>Business Logic:</strong> UserService, ProductService, CartService, SecurityService</li>
+              <li><strong>Data:</strong> JPA/Hibernate repositories backed by MySQL</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-        <p>
-            The design includes UML diagrams, ERD, flowcharts, and deployment diagrams that illustrate the system’s structure and behavior.
-        </p>
+      <!-- ERD Card -->
+      <div class="col-md-6">
+        <div class="card h-100 shadow-sm">
+          <img src="img/erd.png" class="card-img-top" alt="PAWS ERD Diagram">
+          <div class="card-body">
+            <h5 class="card-title">Entity-Relationship Diagram (ERD)</h5>
+            <p class="card-text">
+              The database schema models users, products, carts, and orders with clear foreign key relationships.
+              This ensures data integrity and supports secure, consistent e-commerce workflows.
+            </p>
+            <ul class="small">
+              <li><strong>Users & Authorities:</strong> Authentication and role-based access</li>
+              <li><strong>Products:</strong> Inventory with pricing and descriptions</li>
+              <li><strong>Orders & OrderDetails:</strong> Purchase records and line items</li>
+              <li><strong>CartItems:</strong> Session cart persisted at checkout</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
 
-        <a href="docs/architecture-design.pdf" target="_blank" class="btn btn-outline-primary">View Architecture Document</a>
-    </section>
+    <!-- Single PDF Link (only once) -->
+    <div class="text-center mt-4">
+      <a href="docs/architecture-design.pdf" target="_blank" class="btn btn-outline-primary">
+        View Architecture Document
+      </a>
+    </div>
+
+  </div>
+</section>
 
     <!-- TESTING -->
     <section id="testing" class="mb-5">
