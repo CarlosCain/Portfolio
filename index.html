@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAWS Storefront Portfolio By Carlos Cain</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            scroll-behavior: smooth;
+        }
+        .hero {
+            background: #343a40;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        .section-title {
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+        .screenshot {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">PAWS Storefront</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#overview">Overview</a></li>
+                <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                <li class="nav-item"><a class="nav-link" href="#architecture">Architecture</a></li>
+                <li class="nav-item"><a class="nav-link" href="#testing">Testing</a></li>
+                <li class="nav-item"><a class="nav-link" href="#run">Run</a></li>
+                <li class="nav-item"><a class="nav-link" href="#demo">Demo</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero-section">
+    <div class="container">
+        <h1>PAWS Storefront - Carlos Cain</h1>
+        <p>A secure, full‑stack e‑commerce application built with Spring Boot, Thymeleaf, MySQL, and Bootstrap.</p>
+        <a href="docs/implementation-plan.pdf" class="btn btn-primary btn-lg px-4">Implementation Plan</a>
+    </div>
+</section>
+
+<div class="container mt-5">
+
+    <!-- OVERVIEW -->
+    <section id="overview" class="mb-5">
+        <h2 class="section-title">Project Overview</h2>
+        <p>
+            The PAWS Storefront is a secure, full‑stack e‑commerce application designed to simulate a real-world online shopping experience for pet products. 
+            Customers can register, log in, browse inventory, manage a shopping cart, and complete purchases. Administrators can manage product listings, update inventory, and review order activity.
+        </p>
+        <p>
+            The application is built using <strong>Spring Boot</strong>, <strong>Thymeleaf</strong>, <strong>Bootstrap</strong>, and <strong>MySQL</strong>, following a layered architecture that separates presentation, business logic, and data access. 
+            Security is enforced through Spring Security, bcrypt password hashing, CSRF protection, and HTTPS/TLS for all authenticated routes.
+        </p>
+        <p>
+            This portfolio summarizes the system’s architecture, design decisions, implementation details, testing results, and final demonstration for the CST‑452 Senior Capstone Project.
+        </p>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="mb-5">
+        <h2 class="section-title">Features</h2>
+
+<!-- USER FEATURES -->
+<h4 class="mt-4 mb-3">User Features</h4>
+
+<!-- USER FEATURE CARDS -->
+<div class="row g-4">
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Secure Registration & Login</h5>
+                <p class="card-text">Users authenticate through Spring Security with bcrypt password hashing and validation.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Browse Product Catalog</h5>
+                <p class="card-text">Dynamic product listings rendered with Thymeleaf and Bootstrap, showing real-time inventory.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Shopping Cart Management</h5>
+                <p class="card-text">Add, remove, and update item quantities with session-based cart logic and automatic totals.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- USER FEATURE SCREENSHOTS -->
+<div class="row mt-4">
+    <!-- Login screenshot (already have this one) -->
+    <div class="col-md-4">
+        <img src="img/login.png" class="screenshot" alt="Login Page Screenshot">
+        <p class="text-center mt-2"><em>Login page with secure authentication and validation</em></p>
+    </div>
+
+    <!-- Cart screenshot -->
+    <div class="col-md-4">
+        <img src="img/cart.png" class="screenshot" alt="Shopping Cart Screenshot">
+        <p class="text-center mt-2"><em>Shopping cart with product selection and quantity management</em></p>
+    </div>
+
+    <!-- Products screenshot -->
+    <div class="col-md-4">
+        <img src="img/products.png" class="screenshot" alt="Product Catalog Screenshot">
+        <p class="text-center mt-2"><em>Product catalog with detailed listings and actions</em></p>
+    </div>
+</div>
+
+        <!-- ADMIN FEATURES -->
+<h4 class="mt-4 mb-3">Admin Features</h4>
+
+<div class="row g-4">
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Product Creation</h5>
+                <p class="card-text">Admins can add new products with validation for name, price, quantity, and description.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Update & Edit Products</h5>
+                <p class="card-text">Full CRUD support allows admins to modify product details and maintain accurate inventory.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Checkout Summary & Order Totals</h5>
+                <p class="card-text">Admins can review purchase summaries to verify order totals and transaction details.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ADMIN FEATURE SCREENSHOTS -->
+<div class="row mt-4">
+    <div class="col-md-4">
+        <img src="img/create-product.png" class="screenshot" alt="Create Product Screenshot">
+        <p class="text-center mt-2"><em>Admin interface for creating new products</em></p>
+    </div>
+
+    <div class="col-md-4">
+        <img src="img/update-product.png" class="screenshot" alt="Update Product Screenshot">
+        <p class="text-center mt-2"><em>Admin interface for updating product details</em></p>
+    </div>
+
+    <div class="col-md-4">
+        <img src="img/checkout.png" class="screenshot" alt="Checkout Summary Screenshot">
+        <p class="text-center mt-2"><em>Checkout summary showing itemized totals and purchase confirmation</em></p>
+    </div>
+</div>
+
+        <!-- SECURITY FEATURES -->
+<h4 class="mt-4 mb-3">Security Features</h4>
+
+<div class="row g-4">
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">HTTPS/TLS Encryption</h5>
+                <p class="card-text">
+                    All authenticated routes require HTTPS, ensuring encrypted communication and secure data transmission.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Encrypted Credentials</h5>
+                <p class="card-text">
+                    Passwords are hashed using bcrypt, protecting user credentials from exposure or compromise.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Secure Authentication Handling</h5>
+                <p class="card-text">
+                    Invalid login attempts trigger safe error messages without revealing sensitive details.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SECURITY FEATURE SCREENSHOTS -->
+<div class="row mt-4">
+    <div class="col-md-4">
+        <img src="img/https-warning.png" class="screenshot" alt="HTTPS Warning Screenshot">
+        <p class="text-center mt-2"><em>Local HTTPS/TLS enabled with a development certificate</em></p>
+    </div>
+
+    <div class="col-md-4">
+        <img src="img/bcrypt.png" class="screenshot" alt="Bcrypt Hash Screenshot">
+        <p class="text-center mt-2"><em>Bcrypt-hashed passwords stored securely in the database</em></p>
+    </div>
+
+    <div class="col-md-4">
+        <img src="img/login-error.png" class="screenshot" alt="Login Error Screenshot">
+        <p class="text-center mt-2"><em>Secure authentication error handling for invalid login attempts</em></p>
+    </div>
+</div>
+
+    </section>
+
+    <!-- ARCHITECTURE -->
+    <section id="architecture" class="mb-5">
+        <h2 class="section-title">Architecture & Design</h2>
+        <p>
+            The PAWS Storefront follows a <strong>three‑layer architecture</strong> designed for maintainability, scalability, and security.
+        </p>
+
+        <ul>
+            <li><strong>Presentation Layer:</strong> Thymeleaf templates, Bootstrap UI, responsive layout</li>
+            <li><strong>Business Layer:</strong> Controllers, Services, Validation, Logging</li>
+            <li><strong>Data Layer:</strong> MySQL database, JPA/Hibernate, DAO layer</li>
+        </ul>
+
+        <p>
+            The design includes UML diagrams, ERD, flowcharts, and deployment diagrams that illustrate the system’s structure and behavior.
+        </p>
+
+        <a href="docs/architecture-design.pdf" target="_blank" class="btn btn-outline-primary">View Architecture Document</a>
+    </section>
+
+    <!-- TESTING -->
+    <section id="testing" class="mb-5">
+        <h2 class="section-title">Testing & Requirements</h2>
+        <p>
+            The system includes <strong>28 test cases</strong> covering authentication, product flows, cart operations, checkout, order history, admin CRUD operations, and HTTPS/TLS validation. 
+            Each test case includes preconditions, steps, expected results, actual results, and pass/fail status.
+        </p>
+
+        <a href="docs/test-plan.pdf" target="_blank" class="btn btn-outline-secondary me-2">View Test Plan</a>
+        <a href="docs/traceability-matrix.pdf" target="_blank" class="btn btn-outline-secondary me-2">View Traceability Matrix</a>
+        <a href="docs/requirements.pdf" target="_blank" class="btn btn-outline-secondary">View Requirements Document</a>
+    </section>
+
+    <!-- HOW TO RUN -->
+    <section id="run" class="mb-5">
+        <h2 class="section-title">How to Run the Project</h2>
+
+        <p>
+            The PAWS Storefront is a Spring Boot web application that runs locally using Java and MySQL. 
+            Follow the steps below to set up the project, configure the database, and launch the application.
+        </p>
+
+        <h5 class="mt-4">Prerequisites</h5>
+        <ul>
+            <li>Java 17 or higher installed</li>
+            <li>MySQL Server installed (local instance)</li>
+            <li>Maven installed (optional if using IntelliJ/VS Code Spring Boot tools)</li>
+            <li>Git installed to clone the repository</li>
+        </ul>
+
+        <h5 class="mt-4">1. Clone the Repository</h5>
+        <pre><code>git clone https://github.com/CarlosCain/PAWS-Storefront.git
+cd PAWS-Storefront
+        </code></pre>
+
+        <h5 class="mt-4">2. Configure the Database</h5>
+        <p>Create a MySQL database named <strong>paws</strong> and update your credentials in 
+        <code>src/main/resources/application.properties</code>:</p>
+
+        <pre><code>spring.datasource.url=jdbc:mysql://localhost:3306/paws
+spring.datasource.username=YOUR_USERNAME
+spring.datasource.password=YOUR_PASSWORD
+spring.jpa.hibernate.ddl-auto=update
+        </code></pre>
+
+        <h5 class="mt-4">3. Run the Application</h5>
+        <p>You can run the project using your IDE or from the command line:</p>
+
+        <pre><code>mvn spring-boot:run
+        </code></pre>
+
+        <h5 class="mt-4">4. Access the Application</h5>
+        <p>Once running, open your browser and navigate to:</p>
+
+        <pre><code>https://localhost:8443
+        </code></pre>
+
+        <h5 class="mt-4">Default Login Credentials</h5>
+        <ul>
+            <li><strong>User:</strong> user / password123</li>
+            <li><strong>Admin:</strong> admin / admin123</li>
+        </ul>
+
+        <p class="mt-3">
+            These accounts allow you to explore both customer and administrative workflows, including browsing products, managing the cart, checking out, and performing admin CRUD operations.
+        </p>
+    </section>
+
+    <!-- DEMO -->
+    <section id="demo" class="mb-5">
+        <h2 class="section-title">Demo & GitHub</h2>
+        <p>
+            The final screencast demonstrates user workflows, admin functionality, security enforcement, architecture explanation, challenges faced, and the Christian worldview reflection.
+        </p>
+
+        <a href="#" class="btn btn-primary btn-lg me-3">Watch Screencast</a>
+        <a href="https://github.com/CarlosCain/Portfolio" target="_blank" class="btn btn-dark btn-lg">View GitHub Repo</a>
+    </section>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
