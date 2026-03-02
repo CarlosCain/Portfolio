@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">Products</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <div class="container">
+            <h1>Products</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Order No</th>
+                        <th>Product Name</th>
+                        <th>Product Company</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="product : ${products}">
+                        <td th:text="${product.id}"></td>
+                        <td th:text="${product.orderNo}"></td>
+                        <td th:text="${product.productName}"></td>
+                        <td th:text="${product.productCompany}"></td>
+                        <td th:text="${product.price}"></td>
+                        <td th:text="${product.quantity}"></td>
+                        <td th:text="${product.description}"></td>
+                        <td>
+                            <a th:href="@{/products/update/{id}(id=${product.id})}" class="btn btn-warning">Update</a>
+                            <a th:href="@{/products/delete/{id}(id=${product.id})}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button onclick="location.href='/products/create'" type="button" class="btn btn-primary">Create Product</button>
+        </div>
+    </div>
+</body>
+</html>

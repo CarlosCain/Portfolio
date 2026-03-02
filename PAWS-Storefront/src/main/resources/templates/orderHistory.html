@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layouts/defaultTemplate">
+<head>
+    <meta charset="UTF-8">
+    <title>Order History</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container mt-4">
+        <h2 class="mb-4 text-center">Your Order History</h2>
+
+        <table class="table table-bordered table-striped align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Order ID</th>
+                    <th>Date</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="order : ${orders}">
+                    <td th:text="${order.id}">12345</td>
+                    <td th:text="${#temporals.format(order.orderDate, 'MMM dd, yyyy HH:mm')}">Oct 25, 2025</td>
+                    <td th:text="${order.total}">99.99</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="mt-4 text-center">
+            <a href="/" class="btn btn-outline-primary">Return to Home</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

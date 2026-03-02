@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layouts/defaultTemplate">
+
+<head>
+    <title>Cart</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+</head>
+
+<body>
+<section layout:fragment="content">
+    <div class="container mt-4">
+
+        <h2>Select Products</h2>
+
+        <table class="table table-bordered">
+            <thead class="table-dark">
+            <tr>
+                <th>Product</th>
+                <th>Company</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Add</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <!-- ⭐ Each row now has its own form -->
+            <tr th:each="product : ${products}">
+                <form th:action="@{/cart/add}" method="post">
+                    <td th:text="${product.productName}">Product</td>
+                    <td th:text="${product.productCompany}">Company</td>
+                    <td th:text="${product.price}">Price</td>
+                    <td th:text="${product.description}">Description</td>
+
+                    <td>
+                        <input type="number" name="quantity" min="1" value="1" />
+                        <input type="hidden" name="productId" th:value="${product.id}" />
+                    </td>
+
+                    <td>
+                        <button type="submit" class="btn btn-primary">Add to Cart</button>
+                    </td>
+                </form>
+            </tr>
+
+            </tbody>
+        </table>
+
+        <hr class="my-5" />
+
+        <h2>Your Cart</h2>
+        <table class="table table-bordered">
+            <thead class="table-secondary">
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="item : ${cartItems}">
+                <td th:text="${item.productId}">Product ID</td>
+                <td th:text="${item.quantity}">Quantity</td>
+                <td>
+                    <form th:action="@{/cart/remove}" method="post" class="d-inline">
+                        <input type="hidden" name="id" th:value="${item.id}" />
+                        <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                    </form>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+
+        <div class="text-end mt-3">
+            <a href="/checkout" class="btn btn-success">Proceed to Checkout</a>
+        </div>
+
+    </div>
+</section>
+</body>
+</html>

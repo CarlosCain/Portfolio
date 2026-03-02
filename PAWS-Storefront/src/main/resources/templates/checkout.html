@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layouts/defaultTemplate">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout</title>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <div class="container mt-4">
+
+        <h2 class="mb-4 text-center">Checkout Summary</h2>
+
+        <table class="table table-bordered table-striped align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Product Name</th>
+                    <th>Company Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="item : ${checkoutItems}">
+                    <td th:text="${item.productName}">Product Name</td>
+                    <td th:text="${item.companyName}">Company Name</td>
+                    <td th:text="${item.price}">Price</td>
+                    <td th:text="${item.quantity}">Quantity</td>
+                    <td th:text="${item.subtotal}">Subtotal</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="d-flex justify-content-end align-items-center mt-3">
+            <h5 class="me-3">Total:</h5>
+            <h5 class="text-success" th:text="${total}">0.00</h5>
+        </div>
+
+        <div class="d-flex justify-content-end mt-4">
+            <form th:action="@{/checkout/confirm}" method="post">
+                <button type="submit" class="btn btn-success">Confirm Purchase</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

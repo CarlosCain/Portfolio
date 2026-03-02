@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">Registration</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <form action="#" th:action="@{doRegistration}" th:object="${registerModel}" method="post" style="max-width: 300px; padding: 15px;" class="m-auto">
+            <h1 class="h3 mb-3 fw-normal" style="text-align: center;">Register</h1>
+            <input th:field="*{firstName}" type="text" id="inputFirstName" class="form-control" placeholder="First Name" style="margin:0.5rem 0rem" required autofocus>
+            <input th:field="*{lastName}" type="text" id="inputLastName" class="form-control" placeholder="Last Name" style="margin:0.5rem 0rem" required>
+            <input th:field="*{phone}" type="text" id="inputPhone" class="form-control" placeholder="Phone Number" style="margin:0.5rem 0rem" required>
+            <input th:field="*{address}" type="text" id="inputAddress" class="form-control" placeholder="Address" style="margin:0.5rem 0rem" required>
+            <input th:field="*{username}" type="text" id="inputUsername" class="form-control" placeholder="Username" style="margin:0.5rem 0rem" required>
+            <input th:field="*{email}" type="email" id="inputEmail" class="form-control" placeholder="Email address" style="margin:0.5rem 0rem" required>
+            <input th:field="*{password}" type="password" id="inputPassword" class="form-control" placeholder="Password" style="margin:0.5rem 0rem" required>
+            <input th:field="*{confirmPassword}" type="password" id="inputPassword2" class="form-control" placeholder="Confirm Password" style="margin:0.5rem 0rem" required>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
+            <p style="margin:0.25rem 0rem">Already a member? <a href="/login/">Log in</a></p>
+
+            <div th:each="err : ${#fields.errors('*')}">
+                <span style="color: red;" th:text="${err}" class="fieldError"></span>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
